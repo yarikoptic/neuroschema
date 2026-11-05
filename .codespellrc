@@ -1,6 +1,13 @@
 [codespell]
 # Ref: https://github.com/codespell-project/codespell#using-a-config-file
-skip = .git,.gitignore,.gitattributes,*.css,.codespellrc
+# data/evaluation.json, data/runs and data/quality are generated and quote text
+# from third-party ontologies; .local holds their local previews
+skip = .git,.git-meta,.gitignore,.gitattributes,.*cache,.venv,.tox,.eggs,*.egg-info,__pycache__,*.pdf,*.svg,*.css,*.min.*,.npm,*/i18n/*,*/build/*,.codespellrc,node_modules,dist,.vercel,.local,./data/evaluation.json,./data/runs,./data/quality
 check-hidden = true
-# ignore-regex = 
-# ignore-words-list =
+# Ignore URLs, and catalog ids and acronyms: those are names, not prose
+ignore-regex = https?://\S+|"(id|acronym)": "[^"]*"
+ignore-words-list =
+  # variable in src/assets/app.js, plural of the <th> element
+  ths,
+  # OWL term, part of the name of the OOPS! pitfall P10 "Missing disjointness"
+  disjointness
