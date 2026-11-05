@@ -293,7 +293,7 @@ export function scoreEntry(entry, facts) {
   // M
   const last = lastActivity(facts);
   const m0 = last ? monthsSince(last) : Infinity;
-  const m = Number.isFinite(m0) && m0 >= 0 ? m0 : Infinity; // unparseable or future dates count as no evidence
+  const m = Number.isFinite(m0) && m0 >= 0 ? m0 : Infinity; // unparsable or future dates count as no evidence
   const rt = T.recency.find((s) => m <= s.upTo);
   add("maintenance", "Recency", rt.pts, 10, last ? `${last.slice(0, 10)} → ${m.toFixed(1)} months (${rt.label})` : "no activity evidence");
   const nRel = facts.releases?.lastYear ?? 0;
